@@ -1,0 +1,17 @@
+*{
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+
+html , body { 
+	max-width: 100%;
+	font-family: 'Lobster', cursive !important;
+	overflow-x: hidden;
+}
+
+
+
+span {
+	padding-left: 40%;
+}

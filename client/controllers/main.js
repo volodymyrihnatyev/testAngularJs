@@ -2,24 +2,25 @@ var app = angular.module('testApp');
 
 
 app.controller('mainCtrl', function($http , $scope ,$timeout ){
-    $scope.message ={};
+    $scope.messages =["sdffs","fdfd"];
     
-    var poll = function() {
+   var poll = function() {
         $timeout($scope.retrieveData, 1000);
     };     
    poll();
-
-    $scope.retrieveData=function(data){
-       $http.post('http://localhost:3000/', data)
+   
+    $scope.retrieveData = function(data){
+       $http.post('http://localhost:3000/api/form', data)
       .success(function (resp ) {
-        $scope.messages =data;
-       console.log(resp);
+        if (resp.length%4==0){
+              $scope.messages.push(data);
+              console.log(resp);
+     }
       })
       .error(function(error) {
        console.log(error);
       });
               angular.element('.name').addClass('afterSend');
-
     };
     
 });
