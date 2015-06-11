@@ -1,0 +1,16 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "mit",
+  "dependencies": {
+    "express": "~4.12.3",
+    "body-parser": "~1.12.3",
+    "morgan": "~1.5.2"
+  }
+}
