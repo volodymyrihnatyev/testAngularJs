@@ -4,32 +4,54 @@
   <meta charset="utf-8">
   <meta content="width=device-width, maximum-scale=1.0, minimum-scale=1.0" name="viewport">
   <title>test</title>
-    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+      <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" type="text/css" href="css/style.css">
       <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
       <script src="bower_components/angular/angular.js"></script>
       <script src="js/app.js"></script>
       <script src="controllers/main.js"></script>
-
-     	 <body>
  </head>
      <body  ng-controller="mainCtrl"> 
-       <h1 class="text-center">AngularJs test</h1>
+          <h1 class="text-center">AngularJs test</h1>
 
        <div class="row">
-<div class="col-md-4 col-lg-4 col-sm-4 col-xs-1"></div>
-  <div class="col-md-4 col-lg-4 col-sm-4 col-xs-10">
-       <div class="center panel panel-primary">
+          <div class="col-md-4 col-lg-4 col-sm-4 col-xs-1">
+          </div>
+               <div class="col-md-4 col-lg-4 col-sm-4 col-xs-10">
+                      <div class="center panel panel-primary">
   <!-- panel contents -->
-            <div class="panel-heading"><span>Messages:</span></div>
+                            <div class="panel-heading"><span>All messages:</span></div>
   <!-- List group -->
                   <ul class="list-group" ng-repeat="message in messages">
-                     <li class="list-group-item">{{message}}</li>
+                     <li class="list-group-item">
+                          {{message}}
+                     </li>
                   </ul>
-            </div>
-  </div>
-<div class="col-md-4 col-lg-4 col-sm-4 col-xs-1"></div>
+                  <ul class="list-group" ng-repeat="picture in pictures">
+                     <li class="list-group-item">
+                           <img src="{{picture}}" alt="some base64 picture">
+                      </li>
+                  </ul>
+                    </div>
+              </div>
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-1"></div>
       </div>
+
+    <!--    <div class="row">
+              <div class="col-md-4 col-lg-4 col-sm-4 col-xs-1">
+              </div>
+                    <div class="col-md-4 col-lg-4 col-sm-4 col-xs-10">
+                              <div class="center panel panel-primary">
+  
+                                  <div class="panel-heading">
+                                      <span>
+                                          Current message:
+                                      </span>
+                                  </div>
+                              </div>
+                   </div>
+              <div class="col-md-4 col-lg-4 col-sm-4 col-xs-1"></div>
+        </div>-->
 
   <!-- footer -->
         <footer id="footer">
