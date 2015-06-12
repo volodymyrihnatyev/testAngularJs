@@ -11,20 +11,24 @@ app.controller('mainCtrl', function($http , $scope ,$timeout ){
     };     
      act();
    
+
     function Consumer() {
-      this.point;/*why undefined????*/
-      var regexpBase64 = /^\s*(?:(?:[A-Za-z0-9+]{4})+\s*)*[A-Za-z0-9+]*={0,2}\s*$/;
+      this.point =undefined;
+      this.currentData = {};
+      regexpBase64 : /^\s*(?:(?:[A-Za-z0-9+]{4})+\s*)*[A-Za-z0-9+]*={0,2}\s*$/;
       this.poll = function(data){
        $http.post('http://localhost:3000/api/form', data)
       .success(function (res ) {
         if ((res.length%4==0)&&(res.search(regexpBase64)!==-1)&&(res.length!==0)){
-          this.point=0;
+             this.point=1;
               $scope.pictures.push(res);
               console.log("pic:"+res);
+              this.currentData.data = res;
           }else {
-            this.point=1;
+              this.point=1;
               $scope.messages.push(res);
               console.log("message:"+res);
+              this.currentData.data = res;
           }
         })
       .error(function(error) {
@@ -41,10 +45,11 @@ app.controller('mainCtrl', function($http , $scope ,$timeout ){
             consumer.poll();
             alert(consumer.point);/*why undefined??*/
             if (consumer.point == 1){
-               return angular.element('#current_message').append('consumer.currentData.data');
+              var myEl = angular.element( document.querySelector( '#current_message' ) );
+               return  myEl.prepend('{{consumer.currentData.data}}');
              }else{
-              var arg=angular.element();
-              return /*angular.element('#current_message').append('<img src="data:image/png;base64,{{consumer.currentData.data}}" alt="base64 picture">');*/
+              var myEl = angular.element( document.querySelector( '#current_message' ) );
+              return myEl.prepend('<img src="data:image/png;base64,{{consumer.currentData.data}}" alt="base64 picture">');
              }
          },
          lifetime : function(){
@@ -52,6 +57,5 @@ app.controller('mainCtrl', function($http , $scope ,$timeout ){
          }
        }
     }
-    var pr = new Presenter();
-   pr.presentation();
 });
+
