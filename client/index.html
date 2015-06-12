@@ -21,14 +21,14 @@
                       <div class="center panel panel-primary">
   <!-- panel contents -->
                             <div class="panel-heading"><span>All messages:</span></div>
-  <!-- List group -->
-                  <ul class="list-group" ng-repeat="message in messages">
-                     <li class="list-group-item">
+  <!-- List group with all messages here -->
+                  <ul class="list-group" >
+                     <li class="list-group-item" ng-repeat="message in messages">
                           {{message}}
                      </li>
                   </ul>
-                  <ul class="list-group" ng-repeat="picture in pictures">
-                     <li class="list-group-item">
+                  <ul class="list-group" >
+                     <li class="list-group-item" ng-repeat="picture in pictures">
                            <img src="data:image/png;base64,{{picture}}" alt="base64 picture">
                       </li>
                   </ul>
@@ -36,7 +36,7 @@
               </div>
             <div class="col-md-4 col-lg-4 col-sm-4 col-xs-1"></div>
       </div>
-
+  <!-- Current message here -->
       <div class="row">
               <div class="col-md-4 col-lg-4 col-sm-4 col-xs-1">
               </div>
@@ -55,7 +55,7 @@
                               </div>
                    </div>
               <div class="col-md-4 col-lg-4 col-sm-4 col-xs-1"></div>
-        </div>-->
+        </div>
 
   <!-- footer -->
         <footer id="footer">
