@@ -6,7 +6,7 @@ app.controller('mainCtrl', function($http , $scope ,$interval,$timeout ){
     $scope.pictures =["TWFyeSBoYWQgYSBsaXR0bGUgbGFtYi4uLiBASktMTU5PUFpbXF1eX2BhamtsbW5ven1+","second"];//static data
     $scope.point=[];//for checking type of message
     $scope.currentData =[];//value of message
-    $scope.Data;
+    $scope.Data = $scope.currentData[0];
 
 
    var action = new Presenter();//Create Presenter object
@@ -49,14 +49,19 @@ app.controller('mainCtrl', function($http , $scope ,$interval,$timeout ){
               var myEl = angular.element( document.querySelector( '#current_message' ) );
               $scope.Data =$scope.currentData[0];
               $scope.currentData.pop();
-                myEl.append('<p>{{Data}}</p>');
+              $scope.shText = true;
+              $scope.shImage = false;
+                myEl.append(' <image Data={{Data}} ></image>');
              }else 
              if ($scope.point.pop() == 0){//in case point==0  -encoded base64 string
               var myEl = angular.element( document.querySelector( '#current_message' ) );
               $scope.Data =$scope.currentData[0];
               $scope.currentData.pop();
-               myEl.append('<img src="data:image/png;base64,{{Data}}" alt="base64 picture">');
+              $scope.shText = false;
+              $scope.shImage = true;
+               myEl.append('<plain-text Data={{Data}}></plain-text>');
              }
+
            },1000);
          };
          //method remove message from element with id '#current_message' every time miliseconds
@@ -65,5 +70,24 @@ app.controller('mainCtrl', function($http , $scope ,$interval,$timeout ){
             $interval(function(){myEl.children().remove()},time);
          };
     }
+})
+.directive('image', function () {
+    return {
+        restrict:'E',
+        transclude:true,
+        scope:{ Data:'@data'},
+        template:
+            '<img src="data:image/png;base64,{{Data}}" alt="base64 picture">' ,
+        replace:true
+    };
+})
+.directive('plainText', function () {
+    return {
+        restrict:'E',
+        transclude:true,
+        scope:{ Data:'@data'},
+        template:
+            '<p>{{Data}}</p>' ,
+        replace:true
+    };
 });
-

@@ -49,7 +49,9 @@
                                       </span>
                                   </div>
                                         <ul class="list-group">
-                                               <li class="list-group-item" id="current_message"><!-- Appending current data from server here -->
+                                               <li class="list-group-item" id="current_message">
+                            <image Data={{Data}} ng-show="shImage"></image>
+                            <plain-text Data={{Data}} ng-show="shText"></plain-text><!-- Appending current data from server here -->
                                                </li>
                                         </ul>
                               </div>
@@ -59,7 +61,7 @@
 
   <!-- footer -->
         <footer id="footer">
-        {{Data}}
+        
         </footer>
 
          

@@ -15,3 +15,11 @@ html , body {
 span {
 	padding-left: 40%;
 }
+
+image {
+	text-align: center;
+}
+
+plain-text{
+	text-align: center;
+}
